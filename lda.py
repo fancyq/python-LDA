@@ -122,6 +122,8 @@ class LDAModel(object):
         Kalpha = self.K * self.alpha
         self.p = (self.nw[word] + self.beta)/(self.nwsum + Vbeta) * \
                  (self.nd[i] + self.alpha) / (self.ndsum[i] + Kalpha)
+        
+        # 下面完成的是多项分布抽样
         for k in xrange(1,self.K):
             self.p[k] += self.p[k-1]
 
