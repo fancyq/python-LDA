@@ -113,10 +113,10 @@ class LDAModel(object):
 
         topic = self.Z[i][j]
         word = self.dpre.docs[i].words[j]
-        self.nw[word][topic] -= 1
-        self.nd[i][topic] -= 1
-        self.nwsum[topic] -= 1
-        self.ndsum[i] -= 1
+        self.nw[word][topic] -= 1  # nw,词word在主题topic上的分布
+        self.nd[i][topic] -= 1     # nd,每个doc中各个topic的词的总数
+        self.nwsum[topic] -= 1   #nwsum,每个topic的词的总数
+        self.ndsum[i] -= 1        # ndsum,每个doc中词的总数
 
         Vbeta = self.dpre.words_count * self.beta
         Kalpha = self.K * self.alpha
